@@ -7,7 +7,10 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { CustomersListComponent } from './pages/customers-list/customers-list.component';
 import { CustomersDetailsComponent } from './pages/customers-details/customers-details.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
-import { CustomerFormCreateComponent } from './components/customer-form-create/customer-form-create.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { HttpClientModule } from '@angular/common/http';
+import { RouterModule } from '@angular/router'; 
+import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 @NgModule({
   declarations: [
@@ -16,9 +19,16 @@ import { CustomerFormCreateComponent } from './components/customer-form-create/c
     CustomersListComponent,
     CustomersDetailsComponent,
     NavbarComponent,
-    CustomerFormCreateComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    FormsModule,
+    FontAwesomeModule,
+    HttpClientModule,
+    RouterModule,
+    NgxChartsModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })

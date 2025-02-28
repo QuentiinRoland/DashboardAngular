@@ -1,1 +1,107 @@
-<p>customers-list works!</p>
+<h2 class="text-2xl font-bold mb-4 text-gray-800">Liste des clients</h2>
+
+<div class="flex items-center space-x-4 mb-4">
+  <div class="relative flex items-center w-full max-w-md">
+    <fa-icon [icon]="faSearch" class="absolute left-3 text-gray-400"></fa-icon>
+    <input
+      type="search"
+      name="searchFilter"
+      [(ngModel)]="searchQuery"
+      (input)="filterCustomers()"
+      placeholder="Rechercher un client"
+      class="w-full pl-10 pr-4 py-2 border rounded-lg focus:ring focus:ring-green-300"
+    />
+  </div>
+  <button
+    class="bg-[#48BF8F] hover:bg-green-600 transition text-white px-5 py-2 rounded-lg shadow-md"
+    (click)="openModal()"
+  >
+    + Ajouter un client
+  </button>
+</div>
+
+<table
+  class="w-full border-collapse border border-gray-300 rounded-lg shadow-md overflow-hidden"
+>
+  <thead>
+    <tr class="bg-gray-100 text-gray-700">
+      <th class="border border-gray-300 px-6 py-3 text-left">ID</th>
+      <th class="border border-gray-300 px-6 py-3 text-left">Nom</th>
+      <th class="border border-gray-300 px-6 py-3 text-left">E-mail</th>
+      <th class="border border-gray-300 px-6 py-3 text-center">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr
+      *ngFor="let customer of filteredCustomers"
+      class="hover:bg-gray-50 transition"
+    >
+      <td class="border border-gray-300 px-6 py-3">{{ customer.id }}</td>
+      <td class="border border-gray-300 px-6 py-3">{{ customer.name }}</td>
+      <td class="border border-gray-300 px-6 py-3">{{ customer.email }}</td>
+      <td class="border border-gray-300 px-6 py-3 text-center">
+        <button
+          (click)="deleteCustomer(customer.id)"
+          class="bg-red-500 hover:bg-red-600 transition px-4 py-2 text-white rounded-md shadow-md"
+        >
+          Supprimer
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<div
+  *ngIf="isModalOpen"
+  class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center"
+>
+  <div class="bg-white p-6 rounded-lg shadow-lg w-96">
+    <h2 class="text-xl font-bold mb-4 text-gray-800">Ajouter un client</h2>
+    <form (ngSubmit)="onSubmit()" #customerForm="ngForm">
+      <div class="mb-4">
+        <label for="name" class="block text-sm font-medium text-gray-700"
+          >Nom :</label
+        >
+        <input
+          type="text"
+          id="name"
+          name="name"
+          [(ngModel)]="customer.name"
+          required
+          class="w-full px-3 py-2 border rounded-lg focus:ring focus:ring-blue-300"
+        />
+      </div>
+
+      <div class="mb-4">
+        <label for="email" class="block text-sm font-medium text-gray-700"
+          >Email :</label
+        >
+        <input
+          type="email"
+          id="email"
+          name="email"
+          [(ngModel)]="customer.email"
+          required
+          class="w-full px-3 py-2 border rounded-lg focus:ring focus:ring-blue-300"
+        />
+      </div>
+
+      <div class="flex justify-end space-x-2">
+        <button
+          type="button"
+          class="bg-gray-400 hover:bg-gray-500 transition text-white px-4 py-2 rounded-md"
+          (click)="closeModal()"
+        >
+          Annuler
+        </button>
+        <button
+          type="submit"
+          class="bg-blue-500 hover:bg-blue-600 transition text-white px-4 py-2 rounded-md"
+          [disabled]="customerForm.invalid"
+        >
+          Ajouter
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

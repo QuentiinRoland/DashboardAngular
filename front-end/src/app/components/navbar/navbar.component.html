@@ -1,27 +1,58 @@
-<nav class="bg-gray-900 text-white p-4">
+<nav
+  class="text-white p-4 bg-[#F8FAFB] transition-all duration-300"
+  [class.w-20]="isCollapsed"
+  [class.w-64]="!isCollapsed"
+>
   <div class="mx-auto flex flex-col items-start h-screen">
-    <a class="text-xl font-bold py-4" routerLink="/">Dashboard</a>
+    <div class="flex items-center justify-start w-full py-4">
+      <img
+        src="../../../assets/EMAsphere-logo.png"
+        alt="EmaSphere Logo"
+        class="transition-all duration-300"
+        width="120"
+        height="120"
+      />
+      <div
+        class="bg-[#FFFFFF] shadow-md rounded-md text-[#9C9DA1] flex justify-center items-center px-2 ml-8 opacity-75 transition-all duration-300"
+        [class.hidden]="isCollapsed"
+      >
+        <img
+          src="../../../assets/cmdLogo.png"
+          alt=""
+          width="20"
+          height="20"
+          class="text-white"
+        />
+        + S
+      </div>
+    </div>
 
     <button class="md:hidden p-2 rounded bg-gray-700" (click)="toggleMenu()">
       ☰
     </button>
 
-    <ul class="hidden md:flex flex-col space-x-6 space-y-4">
-      <li>
+    <ul class="hidden md:flex flex-col space-y-6">
+      <li class="flex justify-center items-center space-x-2">
+        <fa-icon [icon]="faHome" class="text-[#686A6E]"></fa-icon>
         <a
           routerLink="/"
-          routerLinkActive="text-blue-400"
-          class="hover:text-gray-400"
-          >Accueil</a
+          routerLinkActive="text-[#427A77]"
+          class="hover:text-[#48BF8F] text-[#686A6E] transition-opacity duration-300"
+          [class.opacity-0]="isCollapsed"
         >
+          Accueil
+        </a>
       </li>
-      <li>
+      <li class="flex justify-center items-center space-x-2">
+        <fa-icon [icon]="faUser" class="text-[#686A6E]"></fa-icon>
         <a
           routerLink="/customers"
-          routerLinkActive="text-blue-400"
-          class="hover:text-gray-400"
-          >Clients</a
+          routerLinkActive="text-[#427A77]"
+          class="hover:text-[#48BF8F] text-[#686A6E] transition-opacity duration-300"
+          [class.opacity-0]="isCollapsed"
         >
+          Clients
+        </a>
       </li>
     </ul>
 
