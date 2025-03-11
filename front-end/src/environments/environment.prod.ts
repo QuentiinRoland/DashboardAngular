@@ -1,5 +1,6 @@
 export const environment = {
     production: true,
-    apiUrl: 'https://dashboardangular-production.up.railway.app'  // URL publique Railway
+    apiUrl: process.env['NG_APP_API_URL'] || 'https://dashboardangular-production.up.railway.app'
+
   };
   

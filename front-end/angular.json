@@ -50,6 +50,9 @@
               ],
               "outputHashing": "all"
             },
+            "environmentVariables": {
+              "NG_APP_API_URL": "https://dashboardangular-production.up.railway.app"
+            },
             "development": {
               "optimization": false,
               "extractLicenses": false,
