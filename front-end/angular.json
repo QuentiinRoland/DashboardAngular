@@ -24,7 +24,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/front-end",
+            "outputPath": "dist",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": ["zone.js"],
@@ -49,9 +49,6 @@
                 }
               ],
               "outputHashing": "all"
-            },
-            "environmentVariables": {
-              "NG_APP_API_URL": "https://dashboardangular-production.up.railway.app"
             },
             "development": {
               "optimization": false,
